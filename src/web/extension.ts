@@ -128,6 +128,23 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	}));
 
+	context.subscriptions.push(vscode.commands.registerCommand('smallweb.copyCurrentAppUrl', async () => {
+		const currentDocument = vscode.window.activeTextEditor?.document;
+		const currentFolder = currentDocument ? vscode.Uri.joinPath(currentDocument.uri, "..") : vscode.workspace.workspaceFolders?.[0].uri;
+		if (!currentFolder) {
+			vscode.window.showErrorMessage('No workspace folder open');
+			return;
+		}
+
+		const appUrl = await getAppUrl(currentFolder);
+		if (!appUrl) {
+			return;
+		}
+
+		await vscode.env.clipboard.writeText(appUrl.toString());
+		vscode.window.showInformationMessage(`Copied app URL to clipboard: ${appUrl}`);
+	}));
+
 	async function openApp(domain: string = "") {
 		if (!domain) {
 			const input = await vscode.window.showInputBox({ prompt: 'Enter the domain of the app to open' });

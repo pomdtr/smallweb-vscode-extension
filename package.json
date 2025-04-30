@@ -32,6 +32,11 @@
         "category": "Smallweb"
       },
       {
+        "command": "smallweb.copyCurrentAppUrl",
+        "title": "Copy Current App URL",
+        "category": "Smallweb"
+      },
+      {
         "command": "smallweb.openApp",
         "title": "Open App",
         "category": "Smallweb"
