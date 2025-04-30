@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { QuickPickItem } from 'vscode';
+import { JSONC } from "jsonc.min";
 
 
 export type Config = {
@@ -21,8 +22,7 @@ async function loadConfig(folderUri: vscode.Uri): Promise<Config | null> {
 	for (const configPath of [vscode.Uri.joinPath(folderUri, '.smallweb', 'config.jsonc'), vscode.Uri.joinPath(folderUri, '.smallweb', 'config.json')]) {
 		try {
 			const configBytes = await vscode.workspace.fs.readFile(configPath);
-			const jsonc = await import("@std/jsonc");
-			const config = jsonc.parse(new TextDecoder().decode(configBytes));
+			const config = JSONC.parse(new TextDecoder().decode(configBytes));
 			return config as Config;
 		} catch (_) {
 			continue;

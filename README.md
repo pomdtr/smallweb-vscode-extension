@@ -18,9 +18,9 @@
 
 ## Available Commands
 
-- `Open App` - Open an workspace by inputting the app's name.
 - `Open Current App in Browser` - Open the current app in your default browser.
 - `Open Current App in Simple Browser` - Open the current app in the simple browser on the side.
+- `Copy Current App URL` - Copy the current app's URL to the clipboard.
 
 ## URI handlers
 

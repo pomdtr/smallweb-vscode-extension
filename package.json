@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/pomdtr/smallweb-vscode-extension"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "engines": {
     "vscode": "^1.97.0"
   },
@@ -42,6 +42,14 @@
         "category": "Smallweb"
       }
     ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "smallweb.openApp",
+          "when": "false"
+        }
+      ]
+    },
     "configuration": {
       "title": "Smallweb",
       "properties": {
@@ -85,6 +93,6 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@std/jsonc": "npm:@jsr/std__jsonc@^1.0.1"
+    "jsonc.min": "^1.1.0"
   }
 }
